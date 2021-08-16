@@ -13,8 +13,13 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
+    @OneToOne
+    private UnitMeasure unitMeasure;
+
     @ManyToOne
     private Recipe recipe;
+
+
 
     public Long getId() {
         return id;
@@ -48,5 +53,11 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
+    public UnitMeasure getUnitMeasure() {
+        return unitMeasure;
+    }
 
+    public void setUnitMeasure(UnitMeasure unitMeasure) {
+        this.unitMeasure = unitMeasure;
+    }
 }
