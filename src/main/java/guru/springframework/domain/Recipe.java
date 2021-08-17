@@ -13,6 +13,7 @@ public class Recipe {
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
+    private String source;
     private String url;
     private String directions;
 
@@ -33,7 +34,6 @@ public class Recipe {
         joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories;
-
 
     public Long getId() {
         return id;
@@ -73,6 +73,14 @@ public class Recipe {
 
     public void setServings(Integer servings) {
         this.servings = servings;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public String getUrl() {

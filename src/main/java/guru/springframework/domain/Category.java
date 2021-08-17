@@ -12,7 +12,7 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipients;
+    private Set<Recipe> recipes;
 
     public Long getId() {
         return id;
@@ -30,12 +30,12 @@ public class Category {
         this.description = description;
     }
 
-    public Set<Recipe> getRecipients() {
-        return recipients;
+    public Set<Recipe> getRecipes() {
+        return recipes;
     }
 
-    public void setRecipients(Set<Recipe> recipients) {
-        this.recipients = recipients;
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }
 
