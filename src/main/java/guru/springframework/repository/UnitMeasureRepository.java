@@ -1,7 +1,7 @@
 package guru.springframework.repository;
 
-import guru.springframework.domain.UnitMeasure;
+import guru.springframework.domain.UnitOfMeasure;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UnitMeasureRepository extends CrudRepository<UnitMeasure, Long> {
+public interface UnitMeasureRepository extends CrudRepository<UnitOfMeasure, Long> {
 }
