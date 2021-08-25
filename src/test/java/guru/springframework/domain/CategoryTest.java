@@ -1,15 +1,17 @@
 package guru.springframework.domain;
 
-import org.junit.Before;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 
 public class CategoryTest {
 
     Category category;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         category = new Category();
     }
@@ -20,7 +22,7 @@ public class CategoryTest {
 
         category.setId(idValue);
 
-        assertEquals(idValue, category.getId());
+        assertThat(idValue).isEqualTo(category.getId());
     }
 
     @Test
