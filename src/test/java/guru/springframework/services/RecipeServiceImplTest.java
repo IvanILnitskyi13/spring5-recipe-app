@@ -6,13 +6,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,16 +31,32 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipes() {
+    void shouldGetRecipes() {
         Recipe recipe = new Recipe();
         HashSet<Recipe> recipesData = new HashSet<>();
         recipesData.add(recipe);
 
-        Mockito.when(recipeRepository.findAll()).thenReturn(recipesData);
+        when(recipeRepository.findAll()).thenReturn(recipesData);
 
         Set<Recipe> recipes = recipeServiceImpl.getRecipes();
 
         assertThat(recipes.size()).isEqualTo(1);
-        Mockito.verify(recipeRepository, times(1)).findAll();
+        verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void shouldGetRecipeById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeServiceImpl.findById(1L);
+
+        assertThat(recipeReturned).isNotNull();
+        assertThat(recipeReturned.getId()).isEqualTo(1L);
+        verify(recipeRepository, times(1)).findById(anyLong());
+
     }
 }
