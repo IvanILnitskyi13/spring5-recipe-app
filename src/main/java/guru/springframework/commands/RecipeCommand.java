@@ -1,13 +1,16 @@
 package guru.springframework.commands;
 
 import guru.springframework.domain.Difficulty;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,13 +24,16 @@ public class RecipeCommand {
     @Size(min = 3, max = 255, message = "Description must be between 3 and 255 characters")
     private String description;
 
-    @Size(min = 1, max = 999, message = "Cook time must be between 1 and 999 characters")
+    @Min(1)
+    @Max(999)
     private Integer prepTime;
 
-    @Size(min = 1, max = 999, message = "Cook time must be between 1 and 999 characters")
+    @Min(1)
+    @Max(999)
     private Integer cookTime;
 
-    @Size(min = 1, max = 100, message = "Servings must be between 1 and 100 characters")
+    @Min(1)
+    @Max(100)
     private Integer servings;
     private String source;
 
